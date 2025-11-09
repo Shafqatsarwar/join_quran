@@ -11,7 +11,8 @@ This is a minimal example — adapt prompts, streaming, safety, and error handli
 import os
 import json
 import chainlit as cl
-from chainlit.types import Message
+from chainlit import Message
+
 
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
 
