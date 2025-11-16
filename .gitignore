@@ -10,6 +10,10 @@ wheels/
 .venv
 .env*
 .env/
+env.txt
+.env
+backend/.env
+frontend/.env
 # Node Modules
 node_modules/
 # Logs
@@ -29,11 +33,10 @@ jspm_packages/
 out/
 # Production
 build/
-# Misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
-next/dev/lock
+next/dev/lock.venv/
+# env files (examples kept but real .env ignored)
+
+# Editor directories and files
+.vscode/
+.idea/

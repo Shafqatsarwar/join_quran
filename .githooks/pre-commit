@@ -1,0 +1,26 @@
+#!/bin/sh
+# Simple pre-commit hook: refuse commits that add .env files or contain common secret patterns.
+# Install by running: git config core.hooksPath .githooks
+
+STAGED=$(git diff --cached --name-only)
+if [ -z "$STAGED" ]; then
+  exit 0
+fi
+
+for FILE in $STAGED; do
+  # refuse common filenames
+  echo "$FILE" | grep -E "(^|/)\.env$|\.env$|\.key$|credentials|secret" >/dev/null 2>&1 && {
+    echo "ERROR: Refusing to commit possible secret file: $FILE"
+    exit 1
+  }
+
+  # check file contents for suspicious patterns
+  if git show :"$FILE" 2>/dev/null | grep -E -n "(GOOGLE_API_KEY|API_KEY|SECRET_KEY|AWS_ACCESS_KEY_ID|AKIA|PRIVATE_KEY|-----BEGIN PRIVATE KEY-----)" >/dev/null 2>&1; then
+    echo "ERROR: Suspicious secret found inside staged file: $FILE"
+    git show :"$FILE" | grep -E -n "(GOOGLE_API_KEY|API_KEY|SECRET_KEY|AWS_ACCESS_KEY_ID|AKIA|PRIVATE_KEY|-----BEGIN PRIVATE KEY-----)"
+    exit 1
+  fi
+
+done
+
+exit 0

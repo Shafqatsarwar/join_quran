@@ -1,1 +1,42 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.env*
+.env/
+env.txt
 .env
+backend/.env
+frontend/.env
+# Node Modules
+node_modules/
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+# Dependency directories
+node_modules/
+jspm_packages/
+# Optional npm cache directory
+.npm
+# Optional eslint cache
+.eslintcache
+# Next.js build output
+.next/
+out/
+# Production
+build/
+
+next/dev/lock.venv/
+# env files (examples kept but real .env ignored)
+
+# Editor directories and files
+.vscode/
+.idea/

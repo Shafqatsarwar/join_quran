@@ -1,0 +1,12 @@
+
+{
+  "version": 2,
+  "projects": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/next",
+      "config": {}
+    }
+  ],
+  "routes": []
+}

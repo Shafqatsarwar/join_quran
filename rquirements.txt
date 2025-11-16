@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+chainlit
+httpx
+pydantic
+python-dotenv
+google-generativeai
+langchain
+openai-agents
+openai
+langchain-openai
+litellm
+# "test  my entire project step by step fix all issue install all required dependencies to run this website at loacl server and chatbot first then deploy to vercel us following website as a parent folderto verify all details and pages are copy of:
+www.joinquran.com/"
