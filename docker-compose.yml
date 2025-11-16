@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: joinquran_api:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - BACKEND_PORT=8000
+      - CHAINLIT_PORT=8001
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    volumes:
+      - ./backend:/app/backend
+
+  chainlit:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: joinquran_chainlit:latest
+    command: ["chainlit","run","backend/chainlit_app.py","--port", "8001", "--host", "0.0.0.0"]
+    ports:
+      - "8001:8001"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    volumes:
+      - ./backend:/app/backend
