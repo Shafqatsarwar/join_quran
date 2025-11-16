@@ -8,6 +8,25 @@ from typing import List
 app = FastAPI(title="Join Quran - Demo API")
 
 
+import os
+from fastapi.middleware.cors import CORSMiddleware
+
+# Allow origins via ALLOWED_ORIGINS env var (comma separated)
+ALLOWED_ORIGINS = os.environ.get('ALLOWED_ORIGINS')
+if ALLOWED_ORIGINS:
+    origins = [o.strip() for o in ALLOWED_ORIGINS.split(',') if o.strip()]
+else:
+    origins = ["http://localhost:3000"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 class ClassItem(BaseModel):
     id: int
     title: str
